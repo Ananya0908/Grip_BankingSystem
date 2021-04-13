@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<form action="" method="POST">
+  <input type="submit" name="submit">
+   <?php
+  $connection = mysqli_connect("localhost","root","");
+  $db=mysqli_connect_db($connection,'grip');
+
+  if(isset($_POST['submit']))
+  {
+    $sql = "SELECT Name,Email,Address,CurrentBalance FROM customer";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "Name: " . $row["Name"]. " - Email: " . $row["Email"]. " " . $row["Address"]. " " . $row["CurrentBalance"]."<br>";
+  }
+  }
+}
+<?php
+</form>
+
+</body>
+</html>
